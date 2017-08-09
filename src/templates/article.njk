@@ -1,0 +1,11 @@
+{% extends "_layouts/base.njk" %}
+
+{% block main %}
+    <main class="post">
+    <p>{{ date }}</p>
+    {{ contents | safe}}
+    <a href="/{{ previous.path }}">{{ previous.title }}</a>
+    <a href="/{{ next.path }}">{{ next.title }}</a>
+    </main>
+{% endblock %}
+

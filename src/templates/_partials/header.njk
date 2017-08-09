@@ -1,0 +1,17 @@
+<header>
+    <h2>header</h2>
+    <nav>
+        <ul>
+            <li><a href="/"><strong>home</strong></a></li>
+            <li><a href="/about"><strong>about</strong></a></li>
+        </ul>
+    </nav>
+    <nav>
+        <ul>
+            {% for article in collections.articles %}
+                <li><a href="/{{ article.path }}">{{ article.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+
+</header>

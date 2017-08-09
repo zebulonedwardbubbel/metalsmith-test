@@ -1,0 +1,6 @@
+{
+    "extends": "mito",
+    "rules": {
+        "no-underscore-dangle": 0
+    }
+}

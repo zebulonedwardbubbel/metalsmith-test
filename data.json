@@ -1,0 +1,8 @@
+{
+    "meta": {
+        "site": {
+            "title": "First metalsmith site",
+            "description": "metalsmith as a gulp task - an experiment"
+        }
+    }
+}

@@ -1,0 +1,14 @@
+.DS_Store
+node_modules
+bower_components
+dist
+.sass-cache
+config.js
+.tmp
+.idea
+nbproject
+.buildpath
+.project
+.settings
+Thumbs.db
+._*
