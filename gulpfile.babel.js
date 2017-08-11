@@ -5,8 +5,10 @@ import fs from 'fs';
 const data = JSON.parse(fs.readFileSync('./data.json'));
 
 import gulp from 'gulp';
-// import sass from 'gulp-sass';
-// import sourcemaps from 'gulp-sourcemaps';
+import sass from 'gulp-sass';
+import sourcemaps from 'gulp-sourcemaps';
+import postcss from 'gulp-postcss';
+import autoprefixer from 'autoprefixer';
 
 import Metalsmith from 'metalsmith';
 import markdown from 'metalsmith-markdown';
@@ -127,9 +129,14 @@ export function ms(callback) {
 }
 
 export function styles() {
-    const outputPath = paths.styles.dest;
-    return gulp.src(paths.styles.src + '/**/*')
-        .pipe(gulp.dest(outputPath));
+    return gulp.src(paths.styles.src)
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError))
+        .pipe(postcss([
+            autoprefixer()
+        ]))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(paths.styles.dest));
 }
 
 export default ms;
