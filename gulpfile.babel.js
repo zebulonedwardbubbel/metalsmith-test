@@ -41,7 +41,8 @@ const paths = {
     },
     contents: {
         src: './src/contents'
-    }
+    },
+    dest: './dest/'
 };
 
 nunjucks.configure(paths.html.src, { watch: false });
@@ -109,7 +110,7 @@ export function ms(callback) {
             relative: false,
             linksets: [{
                 match: { collection: 'articles' },
-                pattern: 'articles/:date',
+                pattern: 'articles/:title'
             }]
         }))
         .use(layouts({
@@ -137,6 +138,12 @@ export function styles() {
         ]))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(paths.styles.dest));
+}
+
+export function copy() {
+    return gulp.src('./dest/**/*')
+        .pipe(del('./docs/**/*'))
+        .pipe(gulp.dest('./docs/'))
 }
 
 export default ms;

@@ -1,17 +1,16 @@
 backend:
   name: github
-  repo: owner/repo # Path to your Github repository
+  repo: zebulonedwardbubbel/metalsmith-tryout # Path to your Github repository
   branch: master # Branch to update (master by default)
 
-media_folder: "img/uploads" # Folder where user uploaded files should go
+media_folder: "src/assets/images" # Folder where user uploaded files should go
 
 collections: # A list of collections the CMS should be able to edit
-  - name: "/dest/articles" # Used in routes, e.g., /admin/collections/:slug/edit
-    label: "Article" # Used in the UI, e.g., "New Post"
-    folder: "/dest/articles" # The path to the folder where the documents are stored
+  - name: "articles" # Used in routes, e.g., /admin/collections/:slug/edit
+    label: "Articles" # Used in the UI, e.g., "New Post"
+    folder: "/src/contents/articles" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     fields: # The fields each document in this collection have
-      - {label: "Title", name: "title", widget: "string", tagname: "h1"}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Foo", name: "foo", widget: "foo"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "string", tagname: "h1"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
