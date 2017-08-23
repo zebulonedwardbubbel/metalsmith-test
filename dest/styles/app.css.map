@@ -1,1 +1,0 @@
-{"version":3,"sources":["app.scss"],"names":[],"mappings":"AAAA;;;EAGI,iBAAgB;EAChB,kBAAiB;EACjB,mBAAkB,EACrB","file":"app.css","sourcesContent":["header,\nmain,\nfooter {\n    max-width: 960px;\n    margin-left: auto;\n    margin-right: auto;\n}"]}
