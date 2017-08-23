@@ -42,13 +42,13 @@ const paths = {
     contents: {
         src: './src/contents'
     },
-    dest: './dest/'
+    dest: './dest/**'
 };
 
 nunjucks.configure(paths.html.src, { watch: false });
 
-const clean = () => del(paths.dest);
-export { clean };
+// const clean = () => del('./dest/**', '!./dest/about');
+// export { clean };
 
 // // Dates
 // import moment from 'moment';
@@ -140,10 +140,19 @@ export function styles() {
         .pipe(gulp.dest(paths.styles.dest));
 }
 
-export function copy() {
-    return gulp.src('./dest/**/*')
-        .pipe(del('./docs/**/*'))
-        .pipe(gulp.dest('./docs/'))
+export function clean() {
+    return del([
+        'dest/**/*',
+        '!dest/about'
+    ]);
 }
+
+export function copy() {
+    return gulp.src('dest/**/*')
+        .pipe(gulp.dest('docs/'))
+}
+
+const build = gulp.series(clean, ms, styles, copy);
+gulp.task('build', build);
 
 export default ms;
